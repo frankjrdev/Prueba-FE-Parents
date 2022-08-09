@@ -1,0 +1,120 @@
+<div class="d-flex justify-content-evenly">
+  <h1 class="container mb-3 mt-3">Parent: {{ id }}</h1>
+  <div>
+    <button
+      *ngIf="childrens.length == 0"
+      class="btn btn-danger mt-3 me-2 align-items-center"
+      data-bs-toggle="modal"
+      data-bs-target="#eliminarNode"
+    >
+      Eliminar
+    </button>
+  </div>
+</div>
+
+<div class="container" *ngFor="let children of childrens">
+  <div class="card mb-2 flex-row" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">Children {{ children.id }}</h5>
+      <p class="card-text">Create Date: {{ children.created_at }}</p>
+      <p class="card-text">Update Date: {{ children.updated_at }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-end me-6">
+  <button
+    class="btn btn-orange mb-3 me-2"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Crear Children
+  </button>
+  <button class="btn btn-orange mb-3" (click)="regresar()">Regresar</button>
+</div>
+
+<!-- Modal para crear child -->
+
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Crear un children para el parent {{ id }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        El lenguaje utilizado para crear el childres es: {{ language }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-orange"
+          data-bs-dismiss="modal"
+          (click)="crear()"
+          routerLink="/parents"
+        >
+          crear
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pare eliminar node -->
+<div
+  class="modal fade"
+  id="eliminarNode"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Esta seguro que quiere eliminar el parent {{ id }}?
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-bs-dismiss="modal">
+          No
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="eliminar(id)"
+          routerLink="/parents"
+        >
+          Si
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="row margin-b container ms-5 me-2">
+  <div *ngFor="let parent of parents" class="col-auto">
+    <div class="mt-3 mb-2">
+      <app-parent-card [parent]="parent"></app-parent-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="card" style="width: 12rem">
+  <div class="card-body">
+    <h5 class="card-title">Parent {{ parent.id }}</h5>
+    <p class="card-text">Title: {{ parent.title }}</p>
+    <p class="card-text">Create Date: {{ parent.created_at }}</p>
+    <p class="card-text">Update Date: {{ parent.updated_at }}</p>
+    <div class="d-flex justify-content-between">
+      <a
+        class="btn btn-orange button"
+        [routerLink]="['/parents/children/show', parent.id]"
+        >Children</a
+      >
+    </div>
+  </div>
+</div>
